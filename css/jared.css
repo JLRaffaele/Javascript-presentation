@@ -1,0 +1,118 @@
+@-moz-keyframes talking-stache {
+  0%, 100% {
+    -moz-transform: scale(1, 0.95);
+    transform: scale(1, 0.95);
+  }
+  50% {
+    -moz-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+@-webkit-keyframes talking-stache {
+  0%, 100% {
+    -webkit-transform: scale(1, 0.95);
+    transform: scale(1, 0.95);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+@keyframes talking-stache {
+  0%, 100% {
+    -moz-transform: scale(1, 0.95);
+    -ms-transform: scale(1, 0.95);
+    -webkit-transform: scale(1, 0.95);
+    transform: scale(1, 0.95);
+  }
+  50% {
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+@-moz-keyframes browLeft {
+  0%, 100% {
+    -moz-transform: translateY(25%);
+    transform: translateY(25%);
+  }
+  50% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes browLeft {
+  0%, 100% {
+    -webkit-transform: translateY(25%);
+    transform: translateY(25%);
+  }
+  50% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes browLeft {
+  0%, 100% {
+    -moz-transform: translateY(25%);
+    -ms-transform: translateY(25%);
+    -webkit-transform: translateY(25%);
+    transform: translateY(25%);
+  }
+  50% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+#main-svg .mustache {
+  -moz-animation: talking-stache 500ms infinite;
+  -webkit-animation: talking-stache 500ms infinite;
+  animation: talking-stache 500ms infinite;
+}
+
+#main-svg .brow-l {
+  -moz-animation: browLeft 2000ms infinite;
+  -webkit-animation: browLeft 2000ms infinite;
+  animation: browLeft 2000ms infinite;
+}
+
+#main-svg {
+  position: relative;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+body {
+  background: #E37C1D;
+  margin: 0;
+}
+
+.svg-container {
+  position: relative;
+  bottom:100%;
+  height: 100%;
+}
+
+#main-svg {
+  width: 500px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+#main-svg path {
+  fill: #ccc;
+}
+#main-svg .eyes {
+  fill: #fff;
+}
+#main-svg .brow-l, #main-svg .brow-r {
+  fill: #F6F082;
+}
+#main-svg .mustache {
+  fill: #F6F082;
+}
