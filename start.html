@@ -2,6 +2,7 @@
 	<head>
         <link rel="stylesheet" type="text/css" href="css/font.css">
         <link rel="stylesheet" type="text/css" href="css/slide1.css">
+		<link rel="stylesheet" type="text/css" href="css/intro.css">
 		<link rel="stylesheet" type="text/css" href="css/jean_luc.css">
 		<link rel="stylesheet" type="text/css" href="css/jean_luc_2.css">
 		<link rel="stylesheet" type="text/css" href="css/saud.css">
@@ -32,18 +33,73 @@
 			<div class="step" id="slide1" data-x="1500" data-y="0" data-rotate-x="90" data-rotate-y="180" data-rotate-z="270" data-z="50">
         			<p style='width:1000px;font-size:80px;'>
 				Introduction</p>
-				<style>
-				ul.toast{
-				list-style-image: url('images/bullet.jpg');
-				}
 				
-				</style>
-				<p style='width:1000px;font-size:80px;'>
-				<ul class="toast">
-				<li class = "toast"><p>Our Project</p></li><br></br>
-				<li class = "toast"><p>What we've done</p></li><br></br>
-				<li class = "toast"><p>Goals for future</p></li><br></br>
-				</ul>
+				<script>
+				var TxtRotate = function(el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtRotate.prototype.tick = function() {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+  var that = this;
+  var delta = 300 - Math.random() * 100;
+
+  if (this.isDeleting) { delta /= 2; }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+  }
+
+  setTimeout(function() {
+    that.tick();
+  }, delta);
+};
+
+window.onload = function() {
+  var elements = document.getElementsByClassName('txt-rotate');
+  for (var i=0; i<elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-rotate');
+    var period = elements[i].getAttribute('data-period');
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+  // INJECT CSS
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+  document.body.appendChild(css);
+};
+				</script>
+				
+				<link href="http://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+					<h1>Today Team Toast will explain 
+					  <span
+						 class="txt-rotate"
+						 data-period="2000"
+						 data-rotate='[ "our project", "what we have done", " our future plans", " why Saud = GUI master", " and have fun!" ]'></span>
+					</h1>
     		</div>
 			
 			<div class="step" id="slide2_jeanluc" data-x="2000" data-y="500" data-rotate-x="90" data-rotate-y="180" data-rotate-z="270" data-z="-500">
@@ -92,20 +148,35 @@
 			
 			<div class="step" id="slide3_saud" data-x="2000" data-y="-10000" data-rotate-x="180" data-rotate-y="360" data-rotate-z="540" data-z="-1000">
 			
-<ul class="pics">
+			<p style="font-size: 72px; color: black; text-align: center;"> Saud's GUI </p>
+				<div class="collage">
+                    <!-- Top Set -->
+                    <a href="#">
+                        <img src="images/goal.png" alt="Collage Photo">
+                    </a>
+                    <a href="#">
+                        <img src="images/progress1.png" alt="Collage Photo">
+                    </a>
+                    <a href="#">
+                        <img src="images/progress2.png" alt="Collage Photo">
+                    </a>
+                    <a href="#">
+                        <img src="images/progress3.png" alt="Collage Photo">
+                    </a>
+                    <a href="#">
+                        <img src="images/progress4.png" alt="Collage Photo">
+                    </a>
+					<p style="font-size: 72px; color: #E37C1D;"> Don't remove </p>
+					<p style="font-size: 72px; color: #E37C1D;"> Don't remove </p>
+					<p style="font-size: 72px; color: #E37C1D;"> Don't remove </p>
+					<p style="font-size: 72px; color: #E37C1D;"> Don't remove </p>
 
-	<li><a href="" title="Progress 4"><img src="images/progress4.png" /></a></li>
-	<li><a href="" title="Goal"><img src="images/goal.png" height="75%" /></a></li>
-	<li><a href="" title="Progress 1"><img src="images/Progress1.png" /></a></li>
-	<li><a href="" title="Progress 2"><img src="images/progress2.png" /></a></li>
-	<li><a href="" title="Progress 3"><img src="images/progress3.png" /></a></li>
-	
-</ul><!--pics -->
+				</div>
 				
 				
 			</div>
 			
-			<div class="step" id="slide4_jared" data-x="3000" data-y="1500" data-rotate-x="270" data-rotate-y="540" data-rotate-z="270" data-z="-1500">
+			<div class="step" id="slide4_jared" data-x="8000" data-y="-5500" data-rotate-x="270" data-rotate-y="540" data-rotate-z="270" data-z="-1500">
 				
 <p style="font-size: 72px; color: #E37C1D;"> Jared's slide</p>
 <p style="font-size: 72px; color: black;"> Master Challenge</p>
@@ -184,32 +255,78 @@
 				   </audio>
 			</div>
 			
-			<div class="step" id="slide6_david" data-x="4000" data-y="6500" data-rotate-x="90" data-rotate-y="180" data-rotate-z="270" data-z="-2500">
-				<p style="font-size: 72px; text-align: center;"> David's work</p>
+			<div class="step" id="slide6_david" data-x="12000" data-y="6500" data-rotate-x="90" data-rotate-y="180" data-rotate-z="270" data-z="-2500">
+				
+				<p style="font-size: 72px; text-align: center;">David's Code</p>
+				<div id="matrix">
+				<canvas>
+					
+				</canvas>
+				</div>
+				
+				<script>
+				// Initialising the canvas
+var canvas = document.querySelector('canvas'),
+    ctx = canvas.getContext('2d');
+
+// Setting the width and height of the canvas
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Setting up the letters
+var letters = 'ABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZABCDEFGHIJKLMNOPQRSTUVXYZ';
+letters = letters.split('');
+
+// Setting up the columns
+var fontSize = 10,
+    columns = canvas.width / fontSize;
+
+// Setting up the drops
+var drops = [];
+for (var i = 0; i < columns; i++) {
+  drops[i] = 1;
+}
+
+// Setting up the draw function
+function draw() {
+  ctx.fillStyle = 'rgba(0, 0, 0, .05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  for (var i = 0; i < drops.length; i++) {
+    var text = letters[Math.floor(Math.random() * letters.length)];
+    ctx.fillStyle = '#0f0';
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    drops[i]++;
+    if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
+      drops[i] = 0;
+    }
+  }
+}
+
+// Loop the animation
+setInterval(draw, 33);
+				</script>
 				
 				
-			</div>
+             </div>
 			
 			<div class="step" id="slide7_conclusion" data-x="-5000" data-y="1500" data-rotate-x="90" data-rotate-y="180" data-rotate-z="270" data-z="-3000">
 				<p style="font-size: 72px;"> Conclusion</p>
-			
-				<h1>
-  Still
-  <div class="counter">
-    <span class="decor top"></span>
-    <span class="decor bottom"></span>
-    <span class="from top"><span></span><span class="shadow"></span></span>
-    <span class="from bottom"><span></span><span class="shadow"></span></span>
-    <span class="to top"><span></span><span class="shadow"></span></span>
-    <span class="to bottom"><span></span><span class="shadow"></span></span>
-  </div>
-  seconds from this minute.
-</h1>
+				<br><br \>
+				<br><br \>
+				<br><br \>
+				<br><br \>
+				<br><br \>
 				
-				
-			</div>
+<div id="letter">T</div>
+<div id="description"><p style="font-size: 40px;">is for Team Toast</p></div>
 
-		</div>
+<div id="animation">
+    <div class="toast one"></div>
+    <div class="toast two"></div>
+    <div class="toaster"></div>
+</div>
+
+			</div>
 		<script type="text/javascript" src="js/impress.js"></script>
 		<script type="text/javascript">impress().init();</script>
 	</body>
