@@ -1,20 +1,15 @@
-var carousel = $(".carousel"),
-    currdeg  = 0;
-
-$(".next").on("click", { d: "n" }, rotate);
-$(".prev").on("click", { d: "p" }, rotate);
-
-function rotate(e){
-  if(e.data.d=="n"){
-    currdeg = currdeg - 60;
-  }
-  if(e.data.d=="p"){
-    currdeg = currdeg + 60;
-  }
-  carousel.css({
-    "-webkit-transform": "rotateY("+currdeg+"deg)",
-    "-moz-transform": "rotateY("+currdeg+"deg)",
-    "-o-transform": "rotateY("+currdeg+"deg)",
-    "transform": "rotateY("+currdeg+"deg)"
-  });
-}
+// this will be called onload 
+jQuery(document).ready(function($) {
+jQuery(function($) {
+    // changed .hover to .each
+    $('.photo').each(function() {
+        var rotation = Math.random() * 41 - 10;
+        var depth = Math.floor(Math.random() * 256);
+        $(this).css({
+          'transform' : 'rotateZ(' + rotation + 'deg)',
+          'z-index' : depth
+        });        
+    });
+});
+    // Clock script here
+});
